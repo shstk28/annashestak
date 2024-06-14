@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shannon entropy</title>
+  <style>
+    body {
+      background-color: #f2e7d5;
+  </style>
+</head>
+<body>
+<center>
+<h1 style="color:black">Shannon entropy</h1>
+<p id="demo"></p>
+<p><img alt="" src="image2.jpg"width="270"/></p>
+  <script>
+    function Calculate() {
+      var ev = new Array(4);
+      ev[0] = parseFloat(document.getElementById("TextBox1").value);
+      ev[1] = parseFloat(document.getElementById("TextBox2").value);
+      ev[2] = parseFloat(document.getElementById("TextBox3").value);
+      ev[3] = parseFloat(document.getElementById("TextBox4").value);
+      var s = 0;
+      var p = 0;
+      for (var i = 0; i < ev.length; i++) {
+        p = ev[i] / 100;
+        s += p * Math.log2(1 / p);
+      }
+
+      document.getElementById("Label1").innerHTML = s.toFixed(2);
+    }
+  </script>
+  <div>
+    <br>
+        <input name="TextBox1" type="text" value="50" id="TextBox1" style="width:84px;" />
+        <input name="TextBox2" type="text" value="25" id="TextBox2" style="width:84px;" />
+        <input name="TextBox3" type="text" value="12.5" id="TextBox3" style="width:84px;" />
+        <input name="TextBox4" type="text" value="12.5" id="TextBox4" style="width:84px;" />
+        <input type="button" name="Button1" value="H(X)=" id="Button1" onclick="Calculate()" />
+    <span id="Label1"></span>
+  </div>
+ </center>
+</body>
+</html>
+
+

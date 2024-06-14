@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Caesar DeChiper</h1>
+
+<style>
+body {
+display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  background-color: #f2e7d5;
+}
+</style>
+<p id="demo"></p>
+
+<script>
+function Go() {
+  var result=document.getElementById("to_dechiper").value;
+  document.getElementById("Chiper").innerHTML =ceaserDeCipher(result);
+}
+
+        function isLetter(str) {
+            return str.length === 1 && str.match(/[a-z]/i);
+        }
+
+function ceaserDeCipher(str)
+{
+              var encoded = {
+                d: 'a', e: 'b', f: 'c',
+                g: 'd', h: 'e', i: 'f',
+                j: 'g', k: 'h', l: 'i',
+                m: 'j', n: 'k', o: 'l',
+                p: 'm', q: 'n', r: 'o',
+                p: 'p', t: 'q', u: 'r',
+                v: 's', w: 't', x: 'u',
+                y: 'v', z: 'w', a: 'x',
+                b: 'y', c: 'z'    
+            };
+            str = str.toLowerCase();
+            var res="";
+            for (var i = 0 ; i < str.length; i++) {
+                if (isLetter(str[i]) != null) {
+                    res += encoded[str[i]];
+                }
+                else
+                {
+                    res += str[i];
+                }
+            }
+           return res;
+
+}
+</script>
+<form>
+     <input type="text" value="" id="to_dechiper">
+    <input type="button" value="encrypt" onClick="Go()"/>
+    <span id="Chiper"></span>
+  <p id="demo"></p>
+
+ </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+using System;
+class Lb
+{
+  public static void Main(string[] args)
+  {
+    while(true)
+     {
+      Console.Write ("Enter number:");
+      String s=Console.ReadLine();
+      double x = double.Parse(s);
+      double l = Math.Log(x, 2);
+      Console.WriteLine("Lb=({0})={1}",x,l);
+    
+  }
+//Console.ReadKey();
+}
+}

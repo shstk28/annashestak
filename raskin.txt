@@ -1,0 +1,90 @@
+Jef Raskin step by step
+
+
+Step 1:
+class AJefRaskinBuckUp
+{
+static void Main(string[] args){
+System.Console.WriteLine("Hi from AJefRaskinBuckUp");
+}
+}
+Step 2:
+using System.IO;
+using System;
+
+class AJefRaskinBuckUp
+{
+static void Main(string[] args){
+System.Console.WriteLine("Hi from AJefRaskinBuckUp");
+FileInfo f = new FileInfo(@"C:\_E\0.txt");
+f.CopyTo(@"D:\_E\0.txt");
+}
+}
+
+Step 3:
+using System.IO;
+using System;
+
+class AJefRaskinBuckUp
+{
+static void Main(string[] args){
+System.Console.WriteLine("Hi from AJefRaskinBuckUp");
+AFileCopy();
+}
+static void AFileCopy(){
+FileInfo f = new FileInfo(@"C:\_E\0.txt");
+f.CopyTo(@"D:\_E\0.txt");
+}
+}
+
+Step 4:
+using System.IO;
+using System;
+
+class AJefRaskinBuckUp
+{
+static void Main(string[] args){
+System.Console.WriteLine("Hi from AJefRaskinBuckUp");
+//AFileCopy();
+DirectoryContent();
+}
+static void AFileCopy(){
+FileInfo f = new FileInfo(@"C:\_E\0.txt");
+f.CopyTo(@"D:\_E\0.txt");
+}
+static void DirectoryContent(){
+DirectoryInfo oD = new DirectoryInfo("C:\\_E");
+Console.WriteLine("DIR:{0}\n",oD.FillName.ToString());
+foreach (FileInfo f in oD.GetFiles()){
+Console.WriteLine("FileName:{0}", f.FullName);
+}
+}
+}
+
+Step 5:
+using System.IO;
+using System;
+
+class AJefRaskinBuckUp
+{
+static void Main(string[] args){
+System.Console.WriteLine("Hi from AJefRaskinBuckUp");
+FileInfo fi = new FileInfo(@"C:\_E\0.txt");
+AFileCopy(fi);
+//DirectoryContent();
+}
+static void AFileCopy(FileInfo f){
+string s ="";
+s="D:"+"\\"+f.DirectoryName.Substring(3);
+s+='\\'+f.Name;
+f.CopyTo(s,true);
+
+}
+static void DirectoryContent(){
+DirectoryInfo oD = new DirectoryInfo("C:\\_E");
+Console.WriteLine("DIR:{0}\n",oD.FillName.ToString());
+foreach (FileInfo f in oD.GetFiles()){
+Console.WriteLine("FileName:{0}", f.FullName);
+}
+}
+}

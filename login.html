@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Log in </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2>Log In</h2>
+            <input type="text" id="txtUserName" placeholder="Username" />
+            <input type="password" id="txtPassword" placeholder="Password" />
+            <button id="btnLogin">Log In</button>
+            <p>Login: AnnaShestak, Password: IT</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btnLogin').addEventListener('click', function () {
+            var username = document.getElementById('txtUserName').value;
+            var password = document.getElementById('txtPassword').value;
+
+       
+            if (username === 'AnnaShestak' && password === 'IT') {
+                window.location.href = 'pr6.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        });
+    </script>
+</body>
+
+</html>

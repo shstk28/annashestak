@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background-color: #f2e7d5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    textarea {
+      width: 300px;
+    }
+
+    input[type="button"] {
+      width: 100px;
+    }
+
+    #demo {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Approximation</h1>
+  <image src="image3.jpg" alt="Shannon"><br><br>
+  <textarea rows="1" cols="20" name="usrtxt" wrap="hard">МАМА МЫЛА РА</textarea>
+  <br><br>
+  <input type="button" onClick="Click()" value="Click" size="800">
+  <span id="demo"><br><br></span>
+
+  <script>
+    var arr = new Array();
+
+    function Find(X) {
+      for (j = 0; j < arr.length; j++) {
+        if (arr[j].letters == X) {
+          arr[j].cols = parseInt(arr[j].cols) + 1;
+          return;
+        }
+      }
+      var car = { letters: X, cols: "1" };
+      arr.push(car);
+      return;
+    }
+
+    function Click() {
+      var str = document.getElementsByName("usrtxt")[0].value;
+      var ar = str.split("");
+      for (i = 0; i < ar.length - 1; i++) {
+        Find(ar[i]);
+      }
+      for (j = 0; j < arr.length; j++) {
+        document.getElementById("demo").innerHTML +=
+          "<br><font color='red'>" +
+          arr[j].letters +
+          "</font>-<font color='blue'>" +
+          arr[j].cols +
+          "</font><br><br>";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+body {
+color: black; 
+text-align: center;
+}
+
+img {
+border-radius: 30px;
+}
+
+a {
+color: navy;
+text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration:underline;
+}
+
+h1{
+color:black;
+}
+
+h2{
+text-align: center;
+}

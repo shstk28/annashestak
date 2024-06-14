@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Logarithm Calculation</title>
+  <style>
+    body {
+      font-size: 20px;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+     
+      margin-top: 0;
+    }
+    
+    #result {
+      margin-top: 22px;
+    }
+  </style>
+</head>
+<body bgcolor="#f2e7d5">
+  <script>
+    function calculateLb() {
+      var input = document.getElementById("numberInput");
+      var x = parseFloat(input.value);
+      var l = Math.log2(x);
+      var result = document.getElementById("result");
+      result.innerHTML = "Lb=(" + x + ")=" + l;
+    }
+  </script>
+  
+  <h1>Logarithm Calculation</h1>
+  <input type="text" id="numberInput" placeholder="Enter number">
+  <button onclick="calculateLb()">Calculate</button>
+  
+  <div id="result"></div>
+  
+  <img src="image4.jpg" alt="Photo" style="width: 200px; height: auto; margin-top: 20px;">
+</body>
+</html>

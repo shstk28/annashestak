@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Markov Chain</title>
+ <style>
+    body {
+      background-color: #f2e7d5;
+    }
+  </style>
+  <script>
+    var myMC;
+    var r;
+
+    function MarkovChain(a00, a01, b10, b11) {
+      this.iJarA00 = a00;
+      this.iJarA01 = a01;
+      this.iJarB10 = b10;
+      this.iJarB11 = b11;
+    }
+
+    function Result(white, black, s) {
+      this.white = white;
+      this.black = black;
+      this.s = s;
+    }
+
+    function Read() {
+      myMC = new MarkovChain(50, 50, 20, 80);
+    }
+
+    function Write() {
+      var output = document.getElementById("output");
+      output.innerHTML = "";
+      output.innerHTML += "White: " + r.white + "<br>";
+      output.innerHTML += "Black: " + r.black + "<br>";
+      output.innerHTML += "s: " + r.s + "<br>";
+    }
+
+    function Run() {
+      var TextBoxJarA00 = document.getElementById("TextBoxJarA00").value;
+      var TextBoxJarA01 = document.getElementById("TextBoxJarA01").value;
+      var TextBoxJarB10 = document.getElementById("TextBoxJarB10").value;
+      var TextBoxJarB11 = document.getElementById("TextBoxJarB11").value;
+
+      myMC = new MarkovChain(parseInt(TextBoxJarA00), parseInt(TextBoxJarA01), parseInt(TextBoxJarB10), parseInt(TextBoxJarB11));
+      r = myMC.Run();
+      Write();
+    }
+
+    MarkovChain.prototype.JarA = function () {
+      var r = Math.random();
+      if (r < this.iJarA00 / 100) return 1;
+      return 2;
+    };
+
+    MarkovChain.prototype.JarB = function () {
+      var r = Math.random();
+      if (r < this.iJarB11 / 100) return 2;
+      return 1;
+    };
+
+    MarkovChain.prototype.Run = function () {
+      var i = 0;
+      var jarNo = 1; // Jar A-1 B-2
+      var white = 0;
+      var black = 0;
+      var s = "";
+
+      while (true) {
+        i++;
+        s += (jarNo - 1).toString();
+        if (jarNo === 1) {
+          white++;
+          jarNo = this.JarA();
+        } else {
+          black++;
+          jarNo = this.JarB();
+        }
+
+        if (i >= 1000) {
+          break;
+        }
+      }
+
+      var res = new Result(white, black, s);
+      return res;
+    };
+  </script>
+</head>
+<body>
+  <h1>Markov Chain</h1>
+  <div>
+    <table>
+      <tr>
+        <td></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" value="50" id="TextBoxJarA01" style="width:22px;" />
+          %</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" value="50" id="TextBoxJarA00" style="width:22px;" />
+          %</td>
+        <td><img alt="image5" src="image5.jpg" width="200"></td>
+        <td>
+          <input type="text" value="80" id="TextBoxJarB11" style="width:22px;" />
+          %</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+          <input type="text" value="20" id="TextBoxJarB10" style="width:22px;text-align: center;" />
+          %</td>
+        <td></td>
+      </tr>
+    </table>
+    <br>
+    <button onclick="Run()">Run</button>
+    <br>
+    <br>
+    <div id="output"></div>
+  </div>
+</body>
+</html>
